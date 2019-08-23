@@ -1,0 +1,34 @@
+<h1></h1>
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+<img src="assets/img/warii.png" alt="">
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+
+      USERNAME:
+      <input type="text" formControlName="username">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+      </div>
+    </label>
+  
+    <label>
+      PASSWORD:
+      <input type="text" formControlName="password">
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+    </label>
+
+    <input type="submit" value="CONNEXION" class="cta">
+  
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>username:</strong> 
+    <span>{{ messageForm.controls.name.value }}</span>
+
+    <strong>password:</strong> 
+    <span>{{ messageForm.controls.message.value }}</span>
+  </div>
+
